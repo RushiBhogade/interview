@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Candidate Interview Dossier</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12161d;
+    --panel:#1a2029;
+    --panel-2:#212836;
+    --line:rgba(237,234,227,0.09);
+    --line-strong:rgba(237,234,227,0.18);
+    --paper:#edeae3;
+    --paper-dim:rgba(237,234,227,0.6);
+    --paper-faint:rgba(237,234,227,0.35);
+    --amber:#e3a94b;
+    --amber-dim:rgba(227,169,75,0.15);
+    --teal:#5fa89f;
+    --teal-dim:rgba(95,168,159,0.15);
+    --red:#c1665a;
+    --green:#7ea87a;
+    --radius:3px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .serif{font-family:'Fraunces',serif;}
+
+  /* ===== Header / Masthead ===== */
+  .masthead{
+    border-bottom:1px solid var(--line-strong);
+    padding:28px clamp(16px,4vw,48px) 0;
+    background:
+      linear-gradient(180deg, rgba(227,169,75,0.05), transparent 60%),
+      var(--ink);
+  }
+  .masthead-top{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    flex-wrap:wrap;gap:16px;
+    padding-bottom:22px;
+  }
+  .masthead-title{
+    font-family:'Fraunces',serif;
+    font-optical-sizing:auto;
+    font-weight:600;
+    font-size:clamp(28px,4vw,40px);
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+  .masthead-title .accent{color:var(--amber);font-style:italic;font-weight:500;}
+  .masthead-sub{
+    color:var(--paper-dim);
+    font-size:13px;
+    margin-top:8px;
+    max-width:480px;
+    line-height:1.5;
+  }
+  .masthead-stamp{
+    text-align:right;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--paper-faint);
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    line-height:1.8;
+  }
+  .masthead-stamp b{color:var(--teal);font-weight:600;}
+
+  /* Folder tabs */
+  .tabs{
+    display:flex;
+    gap:4px;
+    overflow-x:auto;
+    padding-top:4px;
+    scrollbar-width:none;
+  }
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab{
+    flex:0 0 auto;
+    position:relative;
+    padding:12px 18px 14px;
+    cursor:pointer;
+    border:1px solid transparent;
+    border-bottom:none;
+    border-radius:6px 6px 0 0;
+    color:var(--paper-faint);
+    background:transparent;
+    transition:background .15s ease, color .15s ease;
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+    min-width:118px;
+  }
+  .tab:hover{color:var(--paper-dim);background:rgba(237,234,227,0.03);}
+  .tab.active{
+    background:var(--panel);
+    border-color:var(--line-strong);
+    color:var(--paper);
+  }
+  .tab-name{font-family:'Fraunces',serif;font-weight:600;font-size:15px;}
+  .tab-role{font-size:10.5px;color:inherit;opacity:0.65;text-transform:uppercase;letter-spacing:0.04em;}
+  .tab-score{
+    position:absolute;top:8px;right:8px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    padding:1px 5px;
+    border-radius:20px;
+    background:var(--amber-dim);
+    color:var(--amber);
+    border:1px solid rgba(227,169,75,0.3);
+  }
+  .tab-score.empty{opacity:0.3;}
+
+  /* ===== Main layout ===== */
+  main{
+    background:var(--panel);
+    min-height:calc(100vh - 150px);
+  }
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:40px clamp(16px,4vw,48px) 100px;
+  }
+
+  /* Candidate header card */
+  .cand-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:24px;
+    flex-wrap:wrap;
+    padding-bottom:28px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:32px;
+  }
+  .cand-name{
+    font-family:'Fraunces',serif;
+    font-size:32px;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  .cand-role{color:var(--teal);font-size:14px;margin-top:4px;font-weight:500;}
+  .cand-exp{color:var(--paper-dim);font-size:13px;margin-top:2px;}
+  .chip-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+  .chip{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    padding:4px 9px;
+    border:1px solid var(--line-strong);
+    border-radius:20px;
+    color:var(--paper-dim);
+    background:rgba(237,234,227,0.02);
+  }
+  .proj-list{margin-top:14px;font-size:13px;color:var(--paper-dim);line-height:1.7;}
+  .proj-list b{color:var(--paper);font-weight:600;}
+
+  /* Score dial */
+  .dial-block{text-align:center;flex:0 0 auto;}
+  .dial{
+    width:96px;height:96px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+    background:conic-gradient(var(--amber) calc(var(--pct,0)*1%), rgba(237,234,227,0.08) 0);
+  }
+  .dial::before{
+    content:'';
+    position:absolute;
+    inset:8px;
+    border-radius:50%;
+    background:var(--panel);
+  }
+  .dial-val{position:relative;font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:600;color:var(--amber);}
+  .dial-label{font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--paper-faint);margin-top:8px;}
+
+  /* Category summary */
+  .cat-summary{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin-bottom:36px;
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .cat-cell{
+    background:var(--panel);
+    padding:12px 14px;
+  }
+  .cat-cell-name{font-size:10.5px;text-transform:uppercase;letter-spacing:0.05em;color:var(--paper-faint);margin-bottom:6px;}
+  .cat-cell-val{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;color:var(--paper);}
+  .cat-cell-val.na{color:var(--paper-faint);font-size:14px;font-weight:400;}
+  .cat-cell-bar{height:2px;background:rgba(237,234,227,0.1);margin-top:8px;border-radius:2px;overflow:hidden;}
+  .cat-cell-bar span{display:block;height:100%;background:var(--teal);}
+
+  /* Section label */
+  .section-label{
+    display:flex;align-items:center;gap:12px;
+    margin:44px 0 18px;
+  }
+  .section-label .line{flex:1;height:1px;background:var(--line-strong);}
+  .section-label .txt{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--teal);
+    white-space:nowrap;
+  }
+
+  /* Question card */
+  .qcard{
+    border:1px solid var(--line);
+    border-radius:4px;
+    background:var(--panel-2);
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  .qhead{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    padding:16px 18px 14px;
+    cursor:pointer;
+  }
+  .qhead-left{display:flex;gap:12px;flex:1;min-width:0;}
+  .qnum{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--paper-faint);
+    padding-top:3px;
+    flex:0 0 auto;
+    min-width:26px;
+  }
+  .qtitle{font-size:15px;font-weight:600;color:var(--paper);line-height:1.4;}
+  .qcat{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    color:var(--teal);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin-top:4px;
+  }
+  .qscore-badge{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--paper-faint);
+    padding-top:2px;
+    flex:0 0 auto;
+  }
+  .qscore-badge.set{color:var(--amber);}
+  .qbody{
+    padding:0 18px 20px 56px;
+    display:none;
+  }
+  .qbody.open{display:block;}
+  .qprompt{font-size:13.5px;color:var(--paper-dim);line-height:1.65;white-space:pre-line;margin-bottom:12px;}
+  .codeblock{
+    background:var(--ink);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:10px 14px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    color:var(--teal);
+    white-space:pre;
+    overflow-x:auto;
+    margin-bottom:12px;
+  }
+  .expected{margin-bottom:12px;}
+  .expected-title{font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--paper-faint);margin-bottom:6px;}
+  .expected ul{margin:0;padding-left:0;list-style:none;}
+  .expected li{
+    font-size:13px;color:var(--paper-dim);
+    padding:2px 0 2px 18px;
+    position:relative;
+    line-height:1.5;
+  }
+  .expected li::before{
+    content:'✓';
+    position:absolute;left:0;top:2px;
+    color:var(--teal);
+    font-size:11px;
+  }
+  .followup{
+    font-size:12.5px;
+    color:var(--paper-dim);
+    background:var(--amber-dim);
+    border-left:2px solid var(--amber);
+    padding:8px 12px;
+    border-radius:0 3px 3px 0;
+    margin-bottom:14px;
+  }
+  .followup b{color:var(--amber);font-weight:600;}
+
+  .score-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px;}
+  .score-label{font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--paper-faint);margin-right:4px;}
+  .score-btn{
+    width:32px;height:32px;
+    border-radius:50%;
+    border:1px solid var(--line-strong);
+    background:transparent;
+    color:var(--paper-dim);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    cursor:pointer;
+    transition:all .12s ease;
+  }
+  .score-btn:hover{border-color:var(--teal);color:var(--paper);}
+  .score-btn.active{
+    background:var(--amber);
+    border-color:var(--amber);
+    color:var(--ink);
+    font-weight:700;
+  }
+  .note-field{
+    width:100%;
+    margin-top:12px;
+    background:var(--ink);
+    border:1px solid var(--line);
+    border-radius:3px;
+    color:var(--paper);
+    font-family:'Inter',sans-serif;
+    font-size:12.5px;
+    padding:8px 10px;
+    resize:vertical;
+    min-height:36px;
+  }
+  .note-field::placeholder{color:var(--paper-faint);}
+  .note-field:focus{outline:none;border-color:var(--teal);}
+
+  /* Final evaluation */
+  .final-panel{
+    border:1px solid var(--line-strong);
+    border-radius:4px;
+    background:var(--panel-2);
+    padding:24px;
+    margin-top:40px;
+  }
+  .final-title{font-family:'Fraunces',serif;font-size:19px;font-weight:600;margin-bottom:4px;}
+  .final-sub{font-size:12px;color:var(--paper-faint);margin-bottom:20px;}
+  .final-table{width:100%;border-collapse:collapse;}
+  .final-table td{
+    padding:8px 4px;
+    border-bottom:1px solid var(--line);
+    font-size:13px;
+  }
+  .final-table td:first-child{color:var(--paper-dim);width:55%;}
+  .final-table td:last-child{
+    font-family:'IBM Plex Mono',monospace;
+    text-align:right;
+    color:var(--paper);
+    font-weight:600;
+  }
+  .final-table tr.overall td{
+    color:var(--amber) !important;
+    font-weight:700;
+    border-bottom:none;
+    padding-top:14px;
+  }
+  .rec-row{display:flex;gap:8px;margin-top:22px;flex-wrap:wrap;}
+  .rec-btn{
+    flex:1;min-width:90px;
+    padding:10px 8px;
+    text-align:center;
+    border:1px solid var(--line-strong);
+    border-radius:3px;
+    background:transparent;
+    color:var(--paper-dim);
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:0.02em;
+    cursor:pointer;
+    transition:all .12s ease;
+  }
+  .rec-btn:hover{border-color:var(--paper-dim);}
+  .rec-btn[data-rec="Strong Hire"].active{background:rgba(126,168,122,0.18);border-color:var(--green);color:var(--green);}
+  .rec-btn[data-rec="Hire"].active{background:var(--teal-dim);border-color:var(--teal);color:var(--teal);}
+  .rec-btn[data-rec="Hold"].active{background:var(--amber-dim);border-color:var(--amber);color:var(--amber);}
+  .rec-btn[data-rec="Reject"].active{background:rgba(193,102,90,0.18);border-color:var(--red);color:var(--red);}
+
+  footer{
+    text-align:center;
+    padding:20px;
+    font-size:11px;
+    color:var(--paper-faint);
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .save-pill{
+    position:fixed;bottom:18px;right:18px;
+    background:var(--panel-2);
+    border:1px solid var(--line-strong);
+    color:var(--paper-dim);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    padding:7px 14px;
+    border-radius:20px;
+    opacity:0;
+    transition:opacity .3s ease;
+    pointer-events:none;
+  }
+  .save-pill.show{opacity:1;}
+  .save-pill.show span{color:var(--teal);}
+
+  @media (max-width:560px){
+    .cand-header{flex-direction:column;}
+    .dial-block{align-self:flex-start;}
+    .qbody{padding-left:18px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-top">
+    <div>
+      <div class="masthead-title">Interview <span class="accent">Dossier</span></div>
+      <div class="masthead-sub">Tailored technical rounds for six candidates — MERN, .NET and full‑stack roles for the OTT platform build. Score as you go; everything saves automatically.</div>
+    </div>
+    <div class="masthead-stamp">6 Files Open<br><b id="stampProgress">0 / 84</b> Questions Scored</div>
+  </div>
+  <div class="tabs" id="tabs"></div>
+</div>
+
+<main>
+  <div class="wrap" id="content"></div>
+</main>
+
+<footer>Shared panel — every interviewer editing this page sees the same live scores.</footer>
+<div class="save-pill" id="savePill"><span>●</span> synced</div>
+<div class="save-pill" id="connPill" style="right:auto;left:18px;">Connecting…</div>
+
+<!-- ============== FIREBASE INIT ==============
+Replace the values below with your own project's config
+(Firebase Console → Project settings → General → Your apps → SDK setup and configuration).
+-->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCtpuOfuOR6FRvPxlfAallErJ1pJCSaoqY",
+    authDomain: "interview-71f84.firebaseapp.com",
+    projectId: "interview-71f84",
+    storageBucket: "interview-71f84.firebasestorage.app",
+    messagingSenderId: "571067616435",
+    appId: "1:571067616435:web:3120f195eb2449d6a034c6"
+  };
+
+  try{
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    window.__fb = {
+      docRef: (id) => doc(db, 'candidates', id),
+      setDoc: (ref, data) => setDoc(ref, data),
+      onSnapshot: (ref, cb, errCb) => onSnapshot(ref, cb, errCb)
+    };
+    window.dispatchEvent(new Event('firebase-ready'));
+  }catch(e){
+    console.error('Firebase init failed — check your firebaseConfig values.', e);
+    window.dispatchEvent(new Event('firebase-failed'));
+  }
+</script>
+
+<script>
+/* ============== DATA ============== */
+const CANDIDATES = [
+{
+  id:'aditya', name:'Aditya Sharma', role:'MERN / React Native — Fresher', exp:'Fresher (2026 Graduate)',
+  tech:['C','C++','JavaScript','React.js','React Native','Node.js','Express.js','MongoDB','JWT','AWS Basics','Docker Basics','REST APIs','Gemini AI'],
+  projects:['AI Interview Preparation Platform','Employee Management System','Video Streaming Backend'],
+  categories:['JavaScript','React','Node.js','MongoDB','REST APIs','Coding','Logic Building','Communication','Scenario Handling'],
+  questions:[
+    {sec:'Technical',cat:'JavaScript',title:'Q1 — var, let, and const',prompt:'Explain the difference between var, let, and const.',expected:['Scope','Hoisting','Reassignment','Redeclaration','Temporal Dead Zone'],followup:'When should we use const?'},
+    {sec:'Technical',cat:'React',title:'Q2 — React Component Lifecycle',prompt:'Explain the React Component Lifecycle.',expected:['Mounting','Updating','Unmounting','useEffect()','Cleanup Function'],followup:'Why does useEffect run twice in React Strict Mode?'},
+    {sec:'Technical',cat:'REST APIs',title:'Q3 — JWT Authentication',prompt:'What is JWT Authentication?',expected:['Header','Payload','Signature','Login Flow','Token Validation'],followup:'Where should JWT be stored — Cookie, Local Storage, or AsyncStorage? Why?'},
+    {sec:'Technical',cat:'REST APIs',title:'Q4 — REST API Fundamentals',prompt:'Explain REST API.',expected:['GET','POST','PUT','PATCH','DELETE','Status Codes'],followup:'Difference between PUT and PATCH.'},
+    {sec:'Technical',cat:'MongoDB',title:'Q5 — MongoDB Aggregation',prompt:'Suppose you have a Users collection and an Orders collection. How will you fetch: User Name, Total Orders, Total Amount?',expected:['Aggregation','$lookup','Pipeline'],followup:null},
+    {sec:'Technical',cat:'Node.js',title:'Q6 — Node.js Event Loop',prompt:'Explain the Event Loop.',expected:['Call Stack','Event Queue','Microtask Queue','Promises','setTimeout'],followup:null},
+    {sec:'Technical',cat:'Node.js',title:'Q7 — Project Verification: AI Interview Platform',prompt:'You mentioned the AI Interview Platform. Explain the Architecture, Frontend, Backend, Gemini Integration, Database, Authentication, Deployment.',expected:['Architecture','Frontend','Backend','Gemini Integration','Database','Authentication','Deployment'],followup:'If the Gemini API becomes slow, how will you optimize it?'},
+    {sec:'Technical',cat:'Coding',title:'Q8 — Coding: findDuplicate',prompt:'Write a function findDuplicate([1,2,3,4,5,2,4])\nExpected output: [2,4]',code:'findDuplicate([1,2,3,4,5,2,4])\n// → [2,4]',expected:['Logic','Time Complexity','Code Quality','Edge Cases'],followup:null},
+    {sec:'Technical',cat:'Coding',title:'Q9 — Coding: Reverse Every Word',prompt:'Input: "Hello World From OTT"\nOutput: "olleH dlroW morF TTO"',code:'Input:  Hello World From OTT\nOutput: olleH dlroW morF TTO',expected:['String Manipulation','Loops','JavaScript Methods'],followup:null},
+    {sec:'Technical',cat:'React',title:'Q10 — OTT App: 200 Movies on Home Screen',prompt:'Netflix Home Screen contains 200 movies. How will you optimize loading?',expected:['Pagination','Lazy Loading','FlatList','Image Caching','Virtualization','API Pagination','Skeleton Loader'],followup:null},
+    {sec:'Scenario',cat:'Scenario Handling',title:'Scenario 1 — Production Login Failure',prompt:'Users are unable to log in. How will you debug?',expected:['Backend Logs','Network Tab','JWT','Database','API','Status Code','Server Logs'],followup:null},
+    {sec:'Scenario',cat:'Scenario Handling',title:'Scenario 2 — App Slows After 30 Minutes',prompt:'Users say the app becomes slow after 30 minutes. How will you investigate?',expected:['Memory Leak','Infinite Rendering','Large State','Images','Profiler','Performance Monitor'],followup:null},
+    {sec:'Logic',cat:'Logic Building',title:'Logical Reasoning — 8 Balls, 2 Weighings',prompt:'You have 8 balls. One ball is heavier. Find it in only 2 weighings.',expected:['Problem Solving','Approach','Logic'],followup:null},
+    {sec:'Communication',cat:'Communication',title:'Communication — Pitch to Non-Technical HR',prompt:'Explain your AI Interview Platform to a non-technical HR within 2 minutes.',expected:['Confidence','Communication','Structure','Simple Language'],followup:null},
+  ]
+},
+{
+  id:'ayasha', name:'Ayasha Khan', role:'.NET Full Stack Developer', exp:'3+ Years',
+  tech:['C#','.NET Core','ASP.NET MVC','SQL Server','Entity Framework','Hangfire','Angular','React','Azure','AWS','Docker','REST APIs'],
+  projects:['Talking Bird','PracticeLink','LawRep'],
+  categories:['.NET Core','C#','SQL Server','Entity Framework','Hangfire','API Design','Coding','Problem Solving','Communication'],
+  questions:[
+    {sec:'Technical',cat:'.NET Core',title:'Q1 — Dependency Injection',prompt:'Explain Dependency Injection in .NET Core.',expected:['Why DI is used','IOC Container','Constructor Injection','Loose Coupling','Testability'],followup:'Difference between AddSingleton(), AddScoped(), and AddTransient().'},
+    {sec:'Technical',cat:'Hangfire',title:'Q2 — Hangfire Internals',prompt:'Your resume mentions Hangfire. Explain how Hangfire works internally.',expected:['Background Jobs','Persistent Storage','Retry Mechanism','Job Scheduler','Dashboard','Queue'],followup:'Why use Hangfire instead of a Windows Service?'},
+    {sec:'Technical',cat:'Entity Framework',title:'Q3 — EF Tracking vs No Tracking',prompt:'Explain Entity Framework Tracking vs No Tracking.',expected:['Change Tracker','AsNoTracking()','Performance','Read-only APIs'],followup:'When should Tracking NOT be used?'},
+    {sec:'Technical',cat:'SQL Server',title:'Q4 — SQL Performance at Scale',prompt:'Employee table has 20 million records. Search API takes 8 seconds. How will you optimize it?',expected:['Indexes','Execution Plan','Pagination','Stored Procedure','Avoid SELECT *','Query Optimization'],followup:'Clustered vs Non-Clustered Index?'},
+    {sec:'Technical',cat:'C#',title:'Q5 — JWT Login Flow',prompt:'Explain complete JWT Login Flow.',expected:['Login','Verify Password','Generate JWT','Refresh Token','Authorization','Middleware'],followup:'Where should Refresh Token be stored?'},
+    {sec:'Technical',cat:'.NET Core',title:'Q6 — Azure Deployment Debugging',prompt:'Your API works locally but fails after deployment. How will you debug?',expected:['Logs','App Settings','Connection String','Environment Variables','Azure Monitor','IIS Logs'],followup:null},
+    {sec:'Technical',cat:'API Design',title:'Q7 — Project Verification: LawRep',prompt:'You mentioned developing backend services. Explain Architecture, Database Design, APIs, Authentication, Deployment, Biggest Challenge.',expected:['Architecture','Database Design','APIs','Authentication','Deployment','Biggest Challenge'],followup:null,redflag:'If candidate cannot explain own project, reduce score.'},
+    {sec:'Technical',cat:'API Design',title:'Q8 — Coding: GET /employees',prompt:'Write an API GET /employees with Pagination, Sorting, Search.',code:'GET /employees\n(pagination, sorting, search)',expected:['Controller','Service','Repository','DTO','LINQ'],followup:null},
+    {sec:'Technical',cat:'C#',title:'Q9 — Coding: LINQ Even Numbers',prompt:'Given List<int> {1,2,3,4,5,6}, return only even numbers using LINQ.',code:'List<int> nums = {1,2,3,4,5,6};\n// return even numbers via LINQ',expected:['Code Quality','LINQ Knowledge'],followup:'Difference between Where(), Select(), Any(), First().'},
+    {sec:'Technical',cat:'API Design',title:'Q10 — OTT Backend: Subscription APIs',prompt:'You are building a Netflix-style backend. Users purchase a subscription. Design the APIs.',expected:['Login','Register','Subscription','Payment','Watch History','Profile','Continue Watching','Logout'],followup:'Discuss Role-Based Authorization and secure payment callbacks.'},
+    {sec:'Scenario',cat:'Problem Solving',title:'Scenario 1 — 500 Internal Server Error',prompt:'Users are receiving 500 Internal Server Error after deployment. What steps will you take?',expected:['Logs','Exception','Database','API','IIS','Azure','Rollback','Monitoring'],followup:null},
+    {sec:'Scenario',cat:'SQL Server',title:'Scenario 2 — SQL Server CPU at 100%',prompt:'Your SQL Server CPU suddenly reaches 100%. Application becomes very slow. How will you investigate?',expected:['Execution Plan','Blocking Queries','Deadlocks','Indexes','SQL Profiler','DMV','Long-running Transactions'],followup:null},
+    {sec:'Logic',cat:'Problem Solving',title:'Logical Reasoning — 25 Horses, 5 Lanes',prompt:'You have 25 horses. Only 5 can race at once. Find the fastest 3 using the minimum number of races.',expected:['Logical Thinking','Problem Solving','Approach'],followup:null},
+    {sec:'Communication',cat:'Communication',title:'Communication — Explain APIs to a Client',prompt:'Imagine you are speaking to a client with no technical background. Explain "What is an API and why does your application need it?"',expected:['Confidence','Clarity','Simplicity','Client Communication'],followup:null},
+  ]
+},
+{
+  id:'karnik', name:'Karnik Sharma', role:'Full Stack Developer (React / Next.js)', exp:'1–2 Years',
+  tech:['React.js','Next.js','Remix.js','Node.js','GraphQL','REST API','Prisma ORM','MongoDB','MySQL','Shopify App Development'],
+  projects:['Full Stack Web Applications','Shopify Applications','Startup Product'],
+  categories:['React.js','Next.js','GraphQL','Prisma ORM','API Integration','Coding','Problem Solving','Communication','OTT Knowledge'],
+  questions:[
+    {sec:'Technical',cat:'Next.js',title:'Q1 — React.js vs Next.js',prompt:'Explain the difference between React.js and Next.js.',expected:['CSR','SSR','SSG','SEO','Routing','Performance'],followup:'When would you choose React over Next.js?'},
+    {sec:'Technical',cat:'GraphQL',title:'Q2 — GraphQL Fundamentals',prompt:'Explain GraphQL.',expected:['Single Endpoint','Query','Mutation','Resolver','Over Fetching','Under Fetching'],followup:'Difference between REST API and GraphQL?'},
+    {sec:'Technical',cat:'Prisma ORM',title:'Q3 — How Prisma Works',prompt:'Your resume mentions Prisma ORM. Explain how Prisma works.',expected:['Schema.prisma','Generate Client','Migration','CRUD','Relations'],followup:'Why Prisma instead of Sequelize?'},
+    {sec:'Technical',cat:'React.js',title:'Q4 — React Performance: 2000 Movies',prompt:'Netflix Home Screen has 2000 movies. How will you optimize it?',expected:['Lazy Loading','Memo','useMemo','useCallback','Infinite Scroll','Pagination','Virtualization','Image Optimization'],followup:null},
+    {sec:'Technical',cat:'API Integration',title:'Q5 — Access & Refresh Token Login Flow',prompt:'Design a Login Flow using Access Token and Refresh Token.',expected:['Login','JWT','Refresh Token','Secure Storage','Token Refresh','Logout'],followup:'Where should Refresh Token be stored?'},
+    {sec:'Technical',cat:'API Integration',title:'Q6 — Project Verification',prompt:'Explain one project you built: Architecture, Database, Authentication, Deployment, Challenges, API Integration.',expected:['Architecture','Database','Authentication','Deployment','Challenges','API Integration'],followup:null,redflag:'Cannot explain architecture.'},
+    {sec:'Technical',cat:'Coding',title:'Q7 — Coding: Movie List Fetch Component',prompt:'Write a React component that fetches a Movie List using fetch(). Display Loading, Error, and Success states.',expected:['Hooks','useEffect','State','API Handling','Clean Code'],followup:null},
+    {sec:'Technical',cat:'Coding',title:'Q8 — Coding: Sort Movies by Rating',prompt:'Given a movies array with name/rating, return movies sorted by rating.',code:'const movies = [\n  {name:"KGF", rating:9},\n  {name:"Pushpa", rating:7},\n  {name:"Leo", rating:8}\n];',expected:['Array.sort()','Comparator Function'],followup:'Bonus: don\'t mutate the original array.'},
+    {sec:'Technical',cat:'OTT Knowledge',title:'Q9 — OTT Frontend Architecture',prompt:'Design a Netflix Home Page. Explain the components.',expected:['Header','Banner','Categories','Movie Cards','Search','Continue Watching','My List','Footer'],followup:'Bonus: describe the folder structure.'},
+    {sec:'Technical',cat:'OTT Knowledge',title:'Q10 — System Design: 8s Homepage Load',prompt:'Users complain the homepage takes 8 seconds to load. How will you improve performance?',expected:['CDN','Lazy Loading','API Pagination','Code Splitting','Image Compression','Caching','SSR','Bundle Optimization'],followup:null},
+    {sec:'Scenario',cat:'Problem Solving',title:'Scenario 1 — Blank White Screen',prompt:'After deployment, users see a Blank White Screen. How will you debug?',expected:['Browser Console','Network Tab','Build Errors','Environment Variables','API','Logs'],followup:null},
+    {sec:'Scenario',cat:'Problem Solving',title:'Scenario 2 — 401 Unauthorized on Every Request',prompt:'Your API suddenly returns 401 Unauthorized for every request. How will you investigate?',expected:['JWT','Token Expired','Authorization Header','Backend Middleware','Refresh Token'],followup:null},
+    {sec:'Logic',cat:'Problem Solving',title:'Logical Reasoning — 100 Floors, 2 Eggs',prompt:'There are 100 floors and 2 eggs. Find the highest safe floor using the minimum number of attempts.',expected:['Logical Thinking','Optimization','Explanation'],followup:null},
+    {sec:'Communication',cat:'Communication',title:'Communication — Pitch Next.js to a Client',prompt:'Pretend I am a client. Explain "Why should we use Next.js instead of React for an OTT platform?"',expected:['Communication','Confidence','Business Understanding','Technical Clarity'],followup:null},
+  ]
+},
+{
+  id:'nasir', name:'Nasir Malik', role:'Senior Full Stack Developer (MERN)', exp:'4+ Years',
+  tech:['React.js','Next.js','Node.js','Express.js','NestJS','MongoDB','PostgreSQL','TypeScript','AWS','Firebase','Socket.IO','React Native'],
+  projects:['Colleges18','Shuraa UK','Multiple Enterprise MERN Applications'],
+  categories:['React.js','Next.js','NestJS','Node.js','PostgreSQL','AWS','System Design','Coding','Communication'],
+  questions:[
+    {sec:'Technical',cat:'NestJS',title:'Q1 — NestJS Architecture',prompt:'Explain the complete architecture of NestJS.',expected:['Modules','Controllers','Providers','Services','Dependency Injection','Middleware','Guards','Interceptors','Pipes'],followup:'Why choose NestJS over Express.js for enterprise applications?'},
+    {sec:'Technical',cat:'Next.js',title:'Q2 — React.js vs Next.js',prompt:'Explain the difference between React.js and Next.js.',expected:['SSR','CSR','SSG','SEO','API Routes','Performance','Hydration'],followup:'Which rendering strategy would you use for an OTT homepage and why?'},
+    {sec:'Technical',cat:'System Design',title:'Q3 — OTT Backend for 10M Users',prompt:'How would you design the backend architecture for an OTT platform with 10 million users?',expected:['API Gateway','Microservices','Authentication Service','Video Service','Payment Service','Notification Service','Redis','Load Balancer','CDN','Message Queue'],followup:'Bonus: discuss monitoring, logging, and horizontal scaling.'},
+    {sec:'Technical',cat:'PostgreSQL',title:'Q4 — PostgreSQL Performance at Scale',prompt:'Movie table contains 50 million records. Search takes 9 seconds. How will you optimize it?',expected:['Indexing','Query Plan','Pagination','Full Text Search','Partitioning','Connection Pooling'],followup:'Difference between PostgreSQL and MongoDB.'},
+    {sec:'Technical',cat:'Node.js',title:'Q5 — Access/Refresh Token Rotation',prompt:'Explain Access Token, Refresh Token, Rotation, Logout, and Blacklist.',expected:['JWT','Refresh Token Rotation','Expiry','Secure Cookies','Revoking Tokens'],followup:'How would you secure authentication across multiple devices?'},
+    {sec:'Technical',cat:'Node.js',title:'Q6 — Socket.IO Use Cases',prompt:'Your resume mentions Socket.IO. Explain its use case.',expected:['WebSocket','Rooms','Broadcasting','Chat','Live Notifications','Online Users'],followup:'Can an OTT app use WebSockets? Give practical examples.'},
+    {sec:'Technical',cat:'React.js',title:'Q7 — Project Verification: Colleges18',prompt:'Explain the architecture of Colleges18: Frontend, Backend, Database, Authentication, Deployment, AWS, Biggest Technical Challenge.',expected:['Frontend','Backend','Database','Authentication','Deployment','AWS','Biggest Technical Challenge'],followup:null,redflag:'Cannot explain own project.'},
+    {sec:'Technical',cat:'Coding',title:'Q8 — Coding: GET /movies API',prompt:'Design an API GET /movies with Pagination, Search, Genre Filter, Sorting, Rating Filter.',code:'GET /movies\n(pagination, search, genre filter, sorting, rating filter)',expected:['Clean API Design','Validation','Error Handling','Response Structure','Status Codes'],followup:null},
+    {sec:'Technical',cat:'Coding',title:'Q9 — Coding: groupMoviesByGenre',prompt:'Write groupMoviesByGenre(movies) that groups an array of movies by genre.',code:'Input:\n[{name:"KGF",genre:"Action"},\n {name:"Leo",genre:"Action"},\n {name:"96",genre:"Romance"}]\n\nOutput:\n{ Action:[...], Romance:[...] }',expected:['Logic','Object Manipulation','Code Quality','Time Complexity'],followup:null},
+    {sec:'Technical',cat:'AWS',title:'Q10 — AWS: 20x Traffic Spike Crash',prompt:'Your Node.js server suddenly crashes because traffic increased 20x after a new movie release. What would you do?',expected:['Auto Scaling','Load Balancer','CloudWatch','Horizontal Scaling','Redis Cache','Database Optimization','CDN'],followup:null},
+    {sec:'Scenario',cat:'System Design',title:'Scenario 1 — Buffering on Mobile Data',prompt:'The OTT app streams perfectly on Wi-Fi but buffers continuously on mobile data. How would you investigate and resolve this?',expected:['CDN','Adaptive Bitrate Streaming (HLS/DASH)','Network Logs','Compression','API Latency','Retry Strategy','Client-side Buffer Management'],followup:null},
+    {sec:'Scenario',cat:'System Design',title:'Scenario 2 — Duplicate Payment Deductions',prompt:'After deployment, users report some payments are deducted twice. How would you debug and prevent this?',expected:['Idempotency Keys','Transaction Management','Payment Gateway Logs','Retry Logic','Database Consistency','Webhook Verification'],followup:null},
+    {sec:'Logic',cat:'System Design',title:'Logical Reasoning — 12 Coins, 3 Weighings',prompt:'You have 12 identical-looking coins. One is heavier or lighter than the rest. Find the odd coin in 3 weighings using a balance scale.',expected:['Logical Thinking','Systematic Approach','Explanation'],followup:null},
+    {sec:'Communication',cat:'Communication',title:'Communication — Pitch to a CTO',prompt:'Imagine you\'re presenting the Colleges18 project to a CTO. Cover Business Problem, Architecture, Technologies Used, Challenges, and why your solution was scalable.',expected:['Confidence','Technical Depth','Clarity','Leadership'],followup:null},
+  ]
+},
+{
+  id:'saloni', name:'Saloni Rajput', role:'Senior .NET Full Stack Developer', exp:'2.5+ Years',
+  tech:['C#','ASP.NET Core','.NET 6/7/8','Entity Framework Core','SQL Server','React.js','SignalR','Redis','JWT Authentication','Azure','Azure DevOps','Docker','xUnit','Clean Architecture'],
+  projects:['Host Application','E87 Carrier Management System','Western Digital Recipe Management','Enterprise Licensing Tool','Multi Host Web Application'],
+  categories:['C#','ASP.NET Core','Entity Framework','Redis','SignalR','Background Services','Coding','System Design','Communication'],
+  questions:[
+    {sec:'Technical',cat:'ASP.NET Core',title:'Q1 — Clean Architecture',prompt:'Your resume mentions Clean Architecture. Explain it with a real project example.',expected:['Domain Layer','Application Layer','Infrastructure Layer','API Layer','Dependency Rule','Repository Pattern','Separation of Concerns'],followup:'Why is Clean Architecture better than a traditional layered architecture?'},
+    {sec:'Technical',cat:'SignalR',title:'Q2 — SignalR',prompt:'Explain SignalR.',expected:['Persistent Connection','Hub','Client','Server Push','Groups','Broadcasting'],followup:'Can SignalR be used in an OTT application? (Live Chat, Live Poll, Watch Party, Notifications, Live Sports Score)'},
+    {sec:'Technical',cat:'Redis',title:'Q3 — Redis',prompt:'Explain Redis.',expected:['In-memory Database','Cache','Session Storage','Pub/Sub','Expiration','Performance Improvement'],followup:'When should Redis NOT be used?'},
+    {sec:'Technical',cat:'Entity Framework',title:'Q4 — EF Loading Strategies',prompt:'Difference between Tracking, No Tracking, Lazy Loading, Eager Loading, Explicit Loading.',expected:['Change Tracker','Include()','AsNoTracking()','Performance'],followup:null},
+    {sec:'Technical',cat:'Background Services',title:'Q5 — Hosted vs Background vs Worker Service',prompt:'Explain Hosted Service, BackgroundService, and Worker Service.',expected:['Long Running Tasks','Scheduling','Polling','Async','Cancellation Token'],followup:'Would you use BackgroundService or Hangfire for daily report generation? Why?'},
+    {sec:'Technical',cat:'ASP.NET Core',title:'Q6 — Project Verification: Enterprise Licensing Tool',prompt:'Explain Architecture, Authentication, Database, API, Deployment, Challenges.',expected:['Architecture','Authentication','Database','API','Deployment','Challenges'],followup:null,redflag:'Cannot explain project architecture.'},
+    {sec:'Technical',cat:'Coding',title:'Q7 — Coding: Movie Subscription API',prompt:'Design POST /subscribe with Subscription Plan, Payment Status, Expiry Date, User Validation.',code:'POST /subscribe\n(plan, payment status, expiry date, user validation)',expected:['Controller','DTO','Validation','Repository','Response Model'],followup:null},
+    {sec:'Technical',cat:'C#',title:'Q8 — Coding: LINQ Top 5 Movies',prompt:'Write a LINQ query returning the Top 5 movies with Rating > 8, sorted descending.',code:'movies.Where(m => m.Rating > 8)\n      .OrderByDescending(...)\n      .Take(5)',expected:['Where()','OrderByDescending()','Take()'],followup:'Bonus: handle null values.'},
+    {sec:'Technical',cat:'C#',title:'Q9 — Complete JWT Authentication Flow',prompt:'Explain the complete Authentication Flow.',expected:['Login','JWT','Refresh Token','Middleware','Claims','Role Based Authorization'],followup:'Where should Refresh Token be stored?'},
+    {sec:'Technical',cat:'System Design',title:'Q10 — OTT Backend for 5M Users',prompt:'Design a backend architecture for 5 million users.',expected:['Load Balancer','API Gateway','Authentication Service','Video Service','Subscription Service','Redis','SQL','Docker','Azure','CDN'],followup:'Bonus: mention monitoring, logging, and rate limiting.'},
+    {sec:'Scenario',cat:'Redis',title:'Scenario 1 — Redis Server Goes Down',prompt:'Redis Server suddenly goes down. What happens? How will you recover?',expected:['Fallback to Database','Cache Rebuild','Retry Policy','Monitoring','High Availability','Logging'],followup:null},
+    {sec:'Scenario',cat:'System Design',title:'Scenario 2 — Slow App, Normal CPU/DB',prompt:'Your application becomes very slow after deployment. CPU usage is normal. Database usage is normal. Where will you investigate?',expected:['Memory Leak','Background Services','API Calls','External Services','Thread Blocking','Network Latency','Logging'],followup:null},
+    {sec:'Logic',cat:'System Design',title:'Logical Reasoning — 100 Lockers Toggle',prompt:'100 lockers, all closed. Person 1 toggles every locker, Person 2 every 2nd, Person 3 every 3rd... Person 100 toggles only locker 100. Which lockers remain open?',expected:['Perfect Square Numbers','Explain why lockers with an odd number of factors remain open'],followup:null},
+    {sec:'Communication',cat:'Communication',title:'Communication — Pitch to Project Manager',prompt:'Imagine I am your Project Manager. Explain your Carrier Management System project in 3 minutes: Business Problem, Technologies Used, Your Responsibilities, Biggest Challenge, Final Outcome.',expected:['Communication','Technical Depth','Leadership','Confidence'],followup:null},
+  ]
+},
+{
+  id:'divya', name:'Divya Gupta', role:'Full Stack Developer (React + Node.js)', exp:'Fresher (Internship Experience)',
+  tech:['JavaScript','TypeScript','React.js','Node.js','Express.js','MySQL','Sequelize','REST APIs','LangChain','LangGraph','RAG','n8n','Puppeteer'],
+  projects:['AI Recruitment Platform','CRO Audit System','Splitkaro'],
+  categories:['JavaScript','React.js','Node.js','MySQL','AI Concepts','Coding','Logic Building','Communication','Problem Solving'],
+  questions:[
+    {sec:'Technical',cat:'JavaScript',title:'Q1 — == vs ===',prompt:'Explain the difference between == and === in JavaScript.',code:'console.log([] == false)\nconsole.log([] === false)',expected:['Type Coercion','Strict Equality','Examples'],followup:'What is the output of the snippet above?'},
+    {sec:'Technical',cat:'React.js',title:'Q2 — React Hooks',prompt:'Explain React Hooks — difference between useState(), useEffect(), useMemo(), useCallback().',expected:['State Management','Side Effects','Performance Optimization','Dependency Array'],followup:'Why does useEffect sometimes execute twice?'},
+    {sec:'Technical',cat:'Node.js',title:'Q3 — Node.js Middleware',prompt:'Explain Middleware.',expected:['Request','Response','next()','Authentication','Logging','Error Middleware'],followup:'Difference between Application, Route, and Error Middleware.'},
+    {sec:'Technical',cat:'MySQL',title:'Q4 — MySQL Performance',prompt:'Employee table has 10 lakh records. Search API is slow. How will you optimize?',expected:['Index','LIMIT','Avoid SELECT *','Query Optimization','Execution Plan'],followup:null},
+    {sec:'Technical',cat:'AI Concepts',title:'Q5 — What Problem Does LangChain Solve?',prompt:'Your resume mentions LangChain. Explain what problem it solves.',expected:['LLM Integration','Prompt Templates','Chains','Memory','Retrieval'],followup:'Difference between LangChain and the OpenAI SDK.'},
+    {sec:'Technical',cat:'AI Concepts',title:'Q6 — Project Verification: AI Recruitment Platform',prompt:'Explain Architecture, Frontend, Backend, Database, AI Flow, Resume Parsing.',expected:['Architecture','Frontend','Backend','Database','AI Flow','Resume Parsing'],followup:null,redflag:'Cannot explain AI flow.'},
+    {sec:'Technical',cat:'Coding',title:'Q7 — Coding: removeDuplicates',prompt:'Write removeDuplicates([1,2,2,3,4,4,5])\nOutput: [1,2,3,4,5]',code:'removeDuplicates([1,2,2,3,4,4,5])\n// → [1,2,3,4,5]',expected:['Logic','Set','Loop','Time Complexity'],followup:null},
+    {sec:'Technical',cat:'Coding',title:'Q8 — Coding: POST /register',prompt:'Write an API POST /register requiring Name, Email, Password, Validation.',code:'POST /register\n(name, email, password, validation)',expected:['Express Route','Validation','Hash Password','Save User','Return Response'],followup:null},
+    {sec:'Technical',cat:'Node.js',title:'Q9 — Why Puppeteer?',prompt:'Why is Puppeteer used?',expected:['Browser Automation','Screenshot','PDF Generation','Web Scraping','Testing'],followup:'Why use Puppeteer instead of Selenium?'},
+    {sec:'Technical',cat:'React.js',title:'Q10 — OTT Frontend Components',prompt:'You are developing a Netflix Home Screen. Which React components would you create?',expected:['Navbar','Banner','Movie Row','Movie Card','Search','Continue Watching','Footer'],followup:'Bonus: discuss component reusability.'},
+    {sec:'Scenario',cat:'Problem Solving',title:'Scenario 1 — Blank White Screen',prompt:'Your React application shows a blank white screen after deployment. How will you debug it?',expected:['Browser Console','Network Tab','API','Environment Variables','Build Errors','Routing'],followup:null},
+    {sec:'Scenario',cat:'Problem Solving',title:'Scenario 2 — Slow AI API (15s)',prompt:'The AI API takes 15 seconds to generate a response. How would you improve the user experience?',expected:['Loading Indicator','Streaming Response','Retry','Queue','Timeout Handling','Caching'],followup:null},
+    {sec:'Logic',cat:'Logic Building',title:'Logical Reasoning — 17 Sheep',prompt:'A farmer has 17 sheep. All but 9 die. How many sheep are left?',expected:['9 Sheep — a wording/observation trap, not a math problem'],followup:null},
+    {sec:'Communication',cat:'Communication',title:'Communication — Pitch to HR Manager',prompt:'Imagine I am an HR manager. Explain your AI Recruitment Platform in 2 minutes without using technical terms.',expected:['Confidence','Clarity','Communication','Business Understanding'],followup:null},
+  ]
+},
+];
+
+/* ============== STATE ============== */
+let state = {}; // { candId: { scores:{qIndex:score}, notes:{qIndex:text}, rec: 'Hire', panelNotes:'' } }
+let activeId = CANDIDATES[0].id;
+let openQ = {}; // candId -> Set of open question indices
+
+CANDIDATES.forEach(c=>{ state[c.id] = { scores:{}, notes:{}, rec:null, panelNotes:'' }; openQ[c.id] = new Set([0]); });
+
+/* ============== STORAGE (Firebase Firestore — shared, real-time) ============== */
+let saveTimers = {};
+let suppressEcho = {}; // avoid re-rendering from our own write's snapshot bounce
+let firestoreReady = false;
+
+function scheduleSave(id){
+  clearTimeout(saveTimers[id]);
+  saveTimers[id] = setTimeout(()=>persist(id), 350);
+}
+
+async function persist(id){
+  if(!firestoreReady){ return; }
+  try{
+    suppressEcho[id] = true;
+    await window.__fb.setDoc(window.__fb.docRef(id), state[id]);
+    showSaved();
+  }catch(e){
+    console.error('save failed for', id, e);
+    setConn('Save failed — check console / Firestore rules', true);
+  }
+}
+
+function showSaved(){
+  const pill=document.getElementById('savePill');
+  pill.classList.add('show');
+  clearTimeout(pill._t);
+  pill._t=setTimeout(()=>pill.classList.remove('show'),1200);
+}
+
+function setConn(text, isError){
+  const pill = document.getElementById('connPill');
+  pill.textContent = text;
+  pill.style.color = isError ? 'var(--red)' : '';
+  pill.classList.add('show');
+  if(!isError){
+    clearTimeout(pill._t);
+    pill._t = setTimeout(()=>pill.classList.remove('show'), 2000);
+  }
+}
+
+function subscribeAll(){
+  CANDIDATES.forEach(c=>{
+    window.__fb.onSnapshot(window.__fb.docRef(c.id), (snap)=>{
+      firestoreReady = true;
+      if(snap.exists()){
+        state[c.id] = Object.assign({scores:{},notes:{},rec:null,panelNotes:''}, snap.data());
+      }
+      // don't fight the field the user is actively typing in
+      const active = document.activeElement;
+      const typing = active && active.tagName === 'TEXTAREA';
+      if(!typing || suppressEcho[c.id]){
+        render();
+      }
+      suppressEcho[c.id] = false;
+      setConn('Live — synced with team', false);
+    }, (err)=>{
+      console.error('Firestore listen failed', err);
+      setConn('Offline — Firestore not configured yet', true);
+    });
+  });
+  render(); // initial paint while snapshots arrive
+}
+
+window.addEventListener('firebase-ready', subscribeAll);
+window.addEventListener('firebase-failed', ()=> setConn('Firebase not configured — edit firebaseConfig', true));
+
+// Safety net: if firebase-ready hasn't fired shortly after load, surface a hint.
+setTimeout(()=>{ if(!firestoreReady) setConn('Waiting for Firebase config…', true); }, 4000);
+
+/* ============== HELPERS ============== */
+function catAvg(cand, cat){
+  const s = state[cand.id].scores;
+  const idxs = cand.questions.map((q,i)=>({q,i})).filter(o=>o.q.cat===cat);
+  const scored = idxs.filter(o=>s[o.i]!=null);
+  if(!scored.length) return null;
+  const sum = scored.reduce((a,o)=>a+s[o.i],0);
+  return sum/scored.length;
+}
+function overallAvg(cand){
+  const s = state[cand.id].scores;
+  const vals = Object.values(s).filter(v=>v!=null);
+  if(!vals.length) return null;
+  return vals.reduce((a,b)=>a+b,0)/vals.length;
+}
+function scoredCount(cand){
+  return Object.values(state[cand.id].scores).filter(v=>v!=null).length;
+}
+function totalScoredAll(){
+  return CANDIDATES.reduce((a,c)=>a+scoredCount(c),0);
+}
+
+/* ============== RENDER ============== */
+function render(){
+  renderTabs();
+  renderContent();
+  document.getElementById('stampProgress').textContent = totalScoredAll()+' / '+CANDIDATES.reduce((a,c)=>a+c.questions.length,0);
+}
+
+function renderTabs(){
+  const tabs = document.getElementById('tabs');
+  tabs.innerHTML = '';
+  CANDIDATES.forEach(c=>{
+    const avg = overallAvg(c);
+    const el = document.createElement('div');
+    el.className = 'tab'+(c.id===activeId?' active':'');
+    el.innerHTML = `
+      <span class="tab-score ${avg==null?'empty':''}">${avg==null?'—':avg.toFixed(1)}</span>
+      <span class="tab-name">${c.name.split(' ')[0]}</span>
+      <span class="tab-role">${c.exp.split('(')[0].trim()}</span>
+    `;
+    el.onclick = ()=>{ activeId=c.id; render(); };
+    tabs.appendChild(el);
+  });
+}
+
+function renderContent(){
+  const cand = CANDIDATES.find(c=>c.id===activeId);
+  const wrap = document.getElementById('content');
+  const avg = overallAvg(cand);
+  const pct = avg==null?0:(avg/5*100);
+
+  let html = `
+    <div class="cand-header">
+      <div>
+        <div class="cand-name">${cand.name}</div>
+        <div class="cand-role">${cand.role}</div>
+        <div class="cand-exp">${cand.exp}</div>
+        <div class="chip-row">${cand.tech.map(t=>`<span class="chip">${t}</span>`).join('')}</div>
+        <div class="proj-list"><b>Projects —</b> ${cand.projects.join(' · ')}</div>
+      </div>
+      <div class="dial-block">
+        <div class="dial" style="--pct:${pct}">
+          <div class="dial-val">${avg==null?'–':avg.toFixed(1)}</div>
+        </div>
+        <div class="dial-label">Overall / 5</div>
+      </div>
+    </div>
+
+    <div class="cat-summary">
+      ${cand.categories.map(cat=>{
+        const a = catAvg(cand,cat);
+        return `<div class="cat-cell">
+          <div class="cat-cell-name">${cat}</div>
+          <div class="cat-cell-val ${a==null?'na':''}">${a==null?'—':a.toFixed(1)}</div>
+          <div class="cat-cell-bar"><span style="width:${a==null?0:(a/5*100)}%"></span></div>
+        </div>`;
+      }).join('')}
+    </div>
+  `;
+
+  const sections = ['Technical','Scenario','Logic','Communication'];
+  const sectionLabels = {Technical:'Technical Round', Scenario:'Scenario Questions', Logic:'Logical Reasoning', Communication:'Communication Round'};
+
+  sections.forEach(sec=>{
+    const qs = cand.questions.map((q,i)=>({q,i})).filter(o=>o.q.sec===sec);
+    if(!qs.length) return;
+    html += `<div class="section-label"><span class="txt">${sectionLabels[sec]}</span><span class="line"></span></div>`;
+    qs.forEach(({q,i})=>{
+      const score = state[cand.id].scores[i];
+      const isOpen = openQ[cand.id].has(i);
+      html += `
+        <div class="qcard">
+          <div class="qhead" onclick="toggleQ('${cand.id}',${i})">
+            <div class="qhead-left">
+              <div class="qnum">${String(i+1).padStart(2,'0')}</div>
+              <div>
+                <div class="qtitle">${q.title}</div>
+                <div class="qcat">${q.cat}</div>
+              </div>
+            </div>
+            <div class="qscore-badge ${score!=null?'set':''}">${score!=null?score+' / 5':'unscored'}</div>
+          </div>
+          <div class="qbody ${isOpen?'open':''}" id="qbody-${cand.id}-${i}">
+            <div class="qprompt">${q.prompt}</div>
+            ${q.code?`<div class="codeblock">${q.code}</div>`:''}
+            <div class="expected">
+              <div class="expected-title">Expected covers</div>
+              <ul>${q.expected.map(e=>`<li>${e}</li>`).join('')}</ul>
+            </div>
+            ${q.followup?`<div class="followup"><b>Follow-up —</b> ${q.followup}</div>`:''}
+            ${q.redflag?`<div class="followup" style="border-color:var(--red);background:rgba(193,102,90,0.12);"><b style="color:var(--red);">Red flag —</b> ${q.redflag}</div>`:''}
+            <div class="score-row">
+              <span class="score-label">Score</span>
+              ${[0,1,2,3,4,5].map(n=>`<button class="score-btn ${score===n?'active':''}" onclick="setScore('${cand.id}',${i},${n})">${n}</button>`).join('')}
+            </div>
+            <textarea class="note-field" placeholder="Interviewer notes on this answer…" onchange="setNote('${cand.id}',${i},this.value)">${state[cand.id].notes[i]||''}</textarea>
+          </div>
+        </div>
+      `;
+    });
+  });
+
+  // final eval
+  const overall = overallAvg(cand);
+  html += `
+    <div class="final-panel">
+      <div class="final-title">Final Evaluation</div>
+      <div class="final-sub">${cand.name} — category breakdown &amp; recommendation</div>
+      <table class="final-table">
+        ${cand.categories.map(cat=>{
+          const a = catAvg(cand,cat);
+          return `<tr><td>${cat}</td><td>${a==null?'—':a.toFixed(1)+' / 5'}</td></tr>`;
+        }).join('')}
+        <tr class="overall"><td>Overall</td><td>${overall==null?'—':overall.toFixed(1)+' / 5'}</td></tr>
+      </table>
+      <div class="rec-row">
+        ${['Strong Hire','Hire','Hold','Reject'].map(r=>`<button class="rec-btn" data-rec="${r}" onclick="setRec('${cand.id}','${r}')">${r}</button>`).join('')}
+      </div>
+      <textarea class="note-field" style="margin-top:16px;min-height:60px;" placeholder="Overall panel notes for ${cand.name.split(' ')[0]}…" onchange="setPanelNote('${cand.id}',this.value)">${state[cand.id].panelNotes||''}</textarea>
+    </div>
+  `;
+
+  wrap.innerHTML = html;
+
+  // mark rec active
+  if(state[cand.id].rec){
+    const btn = wrap.querySelector(`.rec-btn[data-rec="${state[cand.id].rec}"]`);
+    if(btn) btn.classList.add('active');
+  }
+}
+
+/* ============== ACTIONS ============== */
+function toggleQ(id,i){
+  const set = openQ[id];
+  if(set.has(i)) set.delete(i); else set.add(i);
+  const body = document.getElementById(`qbody-${id}-${i}`);
+  if(body) body.classList.toggle('open');
+  // also refresh header badge state without full rerender for snappiness
+}
+function setScore(id,i,n){
+  const cur = state[id].scores[i];
+  state[id].scores[i] = (cur===n) ? null : n; // click again to clear
+  scheduleSave(id);
+  render();
+  // re-open the question that was just scored
+  openQ[id].add(i);
+  const body = document.getElementById(`qbody-${id}-${i}`);
+  if(body) body.classList.add('open');
+}
+function setNote(id,i,val){
+  state[id].notes[i] = val;
+  scheduleSave(id);
+}
+function setRec(id,r){
+  state[id].rec = (state[id].rec===r) ? null : r;
+  scheduleSave(id);
+  render();
+}
+function setPanelNote(id,val){
+  state[id].panelNotes = val;
+  scheduleSave(id);
+}
+
+render(); // paint immediately with blank state so the UI isn't empty while Firebase connects
+</script>
+</body>
+</html>
