@@ -481,7 +481,7 @@ const CANDIDATES = [
   id:'aditya', name:'Aditya Sharma', role:'MERN / React Native — Fresher', exp:'Fresher (2026 Graduate)',
   tech:['C','C++','JavaScript','React.js','React Native','Node.js','Express.js','MongoDB','JWT','AWS Basics','Docker Basics','REST APIs','Gemini AI'],
   projects:['AI Interview Preparation Platform','Employee Management System','Video Streaming Backend'],
-  categories:['JavaScript','React','Node.js','MongoDB','REST APIs','Coding','Logic Building','Communication','Scenario Handling'],
+  categories:['JavaScript','React','Node.js','MongoDB','REST APIs','Coding','Logic Building','Communication','Scenario Handling','DevOps','Networking'],
   questions:[
     {sec:'Technical',cat:'JavaScript',title:'Q1 — var, let, and const',prompt:'Explain the difference between var, let, and const.',expected:['Scope','Hoisting','Reassignment','Redeclaration','Temporal Dead Zone'],followup:'When should we use const?'},
     {sec:'Technical',cat:'React',title:'Q2 — React Component Lifecycle',prompt:'Explain the React Component Lifecycle.',expected:['Mounting','Updating','Unmounting','useEffect()','Cleanup Function'],followup:'Why does useEffect run twice in React Strict Mode?'},
@@ -497,13 +497,16 @@ const CANDIDATES = [
     {sec:'Scenario',cat:'Scenario Handling',title:'Scenario 2 — App Slows After 30 Minutes',prompt:'Users say the app becomes slow after 30 minutes. How will you investigate?',expected:['Memory Leak','Infinite Rendering','Large State','Images','Profiler','Performance Monitor'],followup:null},
     {sec:'Logic',cat:'Logic Building',title:'Logical Reasoning — 8 Balls, 2 Weighings',prompt:'You have 8 balls. One ball is heavier. Find it in only 2 weighings.',expected:['Problem Solving','Approach','Logic'],followup:null},
     {sec:'Communication',cat:'Communication',title:'Communication — Pitch to Non-Technical HR',prompt:'Explain your AI Interview Platform to a non-technical HR within 2 minutes.',expected:['Confidence','Communication','Structure','Simple Language'],followup:null},
+
+    {sec:'Technical',cat:'DevOps',title:'DevOps — Docker Image vs Container',prompt:'What is the difference between a Docker image and a container? How would you containerize your Node.js OTT backend?',expected:['Immutable image template', 'Running container instance', 'Dockerfile', 'Port mapping', 'Environment variables'],followup:'Explain how you would troubleshoot a failure in production.'},
+    {sec:'Technical',cat:'Networking',title:'Networking — Browser to OTT Server',prompt:'Explain what happens from entering an OTT website URL until the page loads.',expected:['DNS', 'IP', 'TCP', 'TLS/HTTPS', 'HTTP request', 'Load balancer/server'],followup:'Explain the request flow step by step.'},
   ]
 },
 {
   id:'ayasha', name:'Ayasha Khan', role:'.NET Full Stack Developer', exp:'3+ Years',
   tech:['C#','.NET Core','ASP.NET MVC','SQL Server','Entity Framework','Hangfire','Angular','React','Azure','AWS','Docker','REST APIs'],
   projects:['Talking Bird','PracticeLink','LawRep'],
-  categories:['.NET Core','C#','SQL Server','Entity Framework','Hangfire','API Design','Coding','Problem Solving','Communication'],
+  categories:['.NET Core','C#','SQL Server','Entity Framework','Hangfire','API Design','Coding','Problem Solving','Communication','DevOps','Networking'],
   questions:[
     {sec:'Technical',cat:'.NET Core',title:'Q1 — Dependency Injection',prompt:'Explain Dependency Injection in .NET Core.',expected:['Why DI is used','IOC Container','Constructor Injection','Loose Coupling','Testability'],followup:'Difference between AddSingleton(), AddScoped(), and AddTransient().'},
     {sec:'Technical',cat:'Hangfire',title:'Q2 — Hangfire Internals',prompt:'Your resume mentions Hangfire. Explain how Hangfire works internally.',expected:['Background Jobs','Persistent Storage','Retry Mechanism','Job Scheduler','Dashboard','Queue'],followup:'Why use Hangfire instead of a Windows Service?'},
@@ -519,13 +522,16 @@ const CANDIDATES = [
     {sec:'Scenario',cat:'SQL Server',title:'Scenario 2 — SQL Server CPU at 100%',prompt:'Your SQL Server CPU suddenly reaches 100%. Application becomes very slow. How will you investigate?',expected:['Execution Plan','Blocking Queries','Deadlocks','Indexes','SQL Profiler','DMV','Long-running Transactions'],followup:null},
     {sec:'Logic',cat:'Problem Solving',title:'Logical Reasoning — 25 Horses, 5 Lanes',prompt:'You have 25 horses. Only 5 can race at once. Find the fastest 3 using the minimum number of races.',expected:['Logical Thinking','Problem Solving','Approach'],followup:null},
     {sec:'Communication',cat:'Communication',title:'Communication — Explain APIs to a Client',prompt:'Imagine you are speaking to a client with no technical background. Explain "What is an API and why does your application need it?"',expected:['Confidence','Clarity','Simplicity','Client Communication'],followup:null},
+
+    {sec:'Technical',cat:'DevOps',title:'DevOps — .NET CI/CD Pipeline',prompt:'Design a CI/CD pipeline for an ASP.NET Core application from commit to production.',expected:['Build', 'Tests', 'Artifact or Docker image', 'Secrets', 'Deployment', 'Health check', 'Rollback'],followup:'Explain how you would troubleshoot a failure in production.'},
+    {sec:'Technical',cat:'Networking',title:'Networking — API Works Locally Only',prompt:'ASP.NET Core API works locally but is unreachable after deployment. How do you debug it?',expected:['Binding', 'Port', 'IIS/reverse proxy', 'Firewall', 'Security group', 'DNS', 'TLS'],followup:'Explain the request flow step by step.'},
   ]
 },
 {
   id:'karnik', name:'Karnik Sharma', role:'Full Stack Developer (React / Next.js)', exp:'1–2 Years',
   tech:['React.js','Next.js','Remix.js','Node.js','GraphQL','REST API','Prisma ORM','MongoDB','MySQL','Shopify App Development'],
   projects:['Full Stack Web Applications','Shopify Applications','Startup Product'],
-  categories:['React.js','Next.js','GraphQL','Prisma ORM','API Integration','Coding','Problem Solving','Communication','OTT Knowledge'],
+  categories:['React.js','Next.js','GraphQL','Prisma ORM','API Integration','Coding','Problem Solving','Communication','OTT Knowledge','DevOps','Networking'],
   questions:[
     {sec:'Technical',cat:'Next.js',title:'Q1 — React.js vs Next.js',prompt:'Explain the difference between React.js and Next.js.',expected:['CSR','SSR','SSG','SEO','Routing','Performance'],followup:'When would you choose React over Next.js?'},
     {sec:'Technical',cat:'GraphQL',title:'Q2 — GraphQL Fundamentals',prompt:'Explain GraphQL.',expected:['Single Endpoint','Query','Mutation','Resolver','Over Fetching','Under Fetching'],followup:'Difference between REST API and GraphQL?'},
@@ -541,13 +547,16 @@ const CANDIDATES = [
     {sec:'Scenario',cat:'Problem Solving',title:'Scenario 2 — 401 Unauthorized on Every Request',prompt:'Your API suddenly returns 401 Unauthorized for every request. How will you investigate?',expected:['JWT','Token Expired','Authorization Header','Backend Middleware','Refresh Token'],followup:null},
     {sec:'Logic',cat:'Problem Solving',title:'Logical Reasoning — 100 Floors, 2 Eggs',prompt:'There are 100 floors and 2 eggs. Find the highest safe floor using the minimum number of attempts.',expected:['Logical Thinking','Optimization','Explanation'],followup:null},
     {sec:'Communication',cat:'Communication',title:'Communication — Pitch Next.js to a Client',prompt:'Pretend I am a client. Explain "Why should we use Next.js instead of React for an OTT platform?"',expected:['Communication','Confidence','Business Understanding','Technical Clarity'],followup:null},
+
+    {sec:'Technical',cat:'DevOps',title:'DevOps — Next.js Production Deployment',prompt:'How would you deploy a Next.js and Node.js application safely to production?',expected:['Build', 'Environment variables', 'Docker/hosting', 'CI/CD', 'Health checks', 'Logs', 'Rollback'],followup:'Explain how you would troubleshoot a failure in production.'},
+    {sec:'Technical',cat:'Networking',title:'Networking — DNS and CDN',prompt:'How do DNS and CDN improve an OTT platform for users in different locations?',expected:['DNS resolution', 'Edge locations', 'Caching', 'Lower latency', 'Origin server', 'Cache hit/miss'],followup:'Explain the request flow step by step.'},
   ]
 },
 {
   id:'nasir', name:'Nasir Malik', role:'Senior Full Stack Developer (MERN)', exp:'4+ Years',
   tech:['React.js','Next.js','Node.js','Express.js','NestJS','MongoDB','PostgreSQL','TypeScript','AWS','Firebase','Socket.IO','React Native'],
   projects:['Colleges18','Shuraa UK','Multiple Enterprise MERN Applications'],
-  categories:['React.js','Next.js','NestJS','Node.js','PostgreSQL','AWS','System Design','Coding','Communication'],
+  categories:['React.js','Next.js','NestJS','Node.js','PostgreSQL','AWS','System Design','Coding','Communication','DevOps','Networking'],
   questions:[
     {sec:'Technical',cat:'NestJS',title:'Q1 — NestJS Architecture',prompt:'Explain the complete architecture of NestJS.',expected:['Modules','Controllers','Providers','Services','Dependency Injection','Middleware','Guards','Interceptors','Pipes'],followup:'Why choose NestJS over Express.js for enterprise applications?'},
     {sec:'Technical',cat:'Next.js',title:'Q2 — React.js vs Next.js',prompt:'Explain the difference between React.js and Next.js.',expected:['SSR','CSR','SSG','SEO','API Routes','Performance','Hydration'],followup:'Which rendering strategy would you use for an OTT homepage and why?'},
@@ -563,13 +572,16 @@ const CANDIDATES = [
     {sec:'Scenario',cat:'System Design',title:'Scenario 2 — Duplicate Payment Deductions',prompt:'After deployment, users report some payments are deducted twice. How would you debug and prevent this?',expected:['Idempotency Keys','Transaction Management','Payment Gateway Logs','Retry Logic','Database Consistency','Webhook Verification'],followup:null},
     {sec:'Logic',cat:'System Design',title:'Logical Reasoning — 12 Coins, 3 Weighings',prompt:'You have 12 identical-looking coins. One is heavier or lighter than the rest. Find the odd coin in 3 weighings using a balance scale.',expected:['Logical Thinking','Systematic Approach','Explanation'],followup:null},
     {sec:'Communication',cat:'Communication',title:'Communication — Pitch to a CTO',prompt:'Imagine you\'re presenting the Colleges18 project to a CTO. Cover Business Problem, Architecture, Technologies Used, Challenges, and why your solution was scalable.',expected:['Confidence','Technical Depth','Clarity','Leadership'],followup:null},
+
+    {sec:'Technical',cat:'DevOps',title:'DevOps — Zero-Downtime Deployment',prompt:'Design zero-downtime deployment for a NestJS OTT backend serving millions.',expected:['Rolling/blue-green', 'Load balancer', 'Health checks', 'DB migration strategy', 'Monitoring', 'Rollback'],followup:'Explain how you would troubleshoot a failure in production.'},
+    {sec:'Technical',cat:'Networking',title:'Networking — Load Balancer and WebSockets',prompt:'Explain DNS → load balancer → reverse proxy → services, including Socket.IO/WebSockets.',expected:['DNS', 'TLS termination', 'Load balancing', 'Reverse proxy', 'WebSocket upgrade', 'Sticky sessions', 'Horizontal scaling'],followup:'Explain the request flow step by step.'},
   ]
 },
 {
   id:'saloni', name:'Saloni Rajput', role:'Senior .NET Full Stack Developer', exp:'2.5+ Years',
   tech:['C#','ASP.NET Core','.NET 6/7/8','Entity Framework Core','SQL Server','React.js','SignalR','Redis','JWT Authentication','Azure','Azure DevOps','Docker','xUnit','Clean Architecture'],
   projects:['Host Application','E87 Carrier Management System','Western Digital Recipe Management','Enterprise Licensing Tool','Multi Host Web Application'],
-  categories:['C#','ASP.NET Core','Entity Framework','Redis','SignalR','Background Services','Coding','System Design','Communication'],
+  categories:['C#','ASP.NET Core','Entity Framework','Redis','SignalR','Background Services','Coding','System Design','Communication','DevOps','Networking'],
   questions:[
     {sec:'Technical',cat:'ASP.NET Core',title:'Q1 — Clean Architecture',prompt:'Your resume mentions Clean Architecture. Explain it with a real project example.',expected:['Domain Layer','Application Layer','Infrastructure Layer','API Layer','Dependency Rule','Repository Pattern','Separation of Concerns'],followup:'Why is Clean Architecture better than a traditional layered architecture?'},
     {sec:'Technical',cat:'SignalR',title:'Q2 — SignalR',prompt:'Explain SignalR.',expected:['Persistent Connection','Hub','Client','Server Push','Groups','Broadcasting'],followup:'Can SignalR be used in an OTT application? (Live Chat, Live Poll, Watch Party, Notifications, Live Sports Score)'},
@@ -585,13 +597,16 @@ const CANDIDATES = [
     {sec:'Scenario',cat:'System Design',title:'Scenario 2 — Slow App, Normal CPU/DB',prompt:'Your application becomes very slow after deployment. CPU usage is normal. Database usage is normal. Where will you investigate?',expected:['Memory Leak','Background Services','API Calls','External Services','Thread Blocking','Network Latency','Logging'],followup:null},
     {sec:'Logic',cat:'System Design',title:'Logical Reasoning — 100 Lockers Toggle',prompt:'100 lockers, all closed. Person 1 toggles every locker, Person 2 every 2nd, Person 3 every 3rd... Person 100 toggles only locker 100. Which lockers remain open?',expected:['Perfect Square Numbers','Explain why lockers with an odd number of factors remain open'],followup:null},
     {sec:'Communication',cat:'Communication',title:'Communication — Pitch to Project Manager',prompt:'Imagine I am your Project Manager. Explain your Carrier Management System project in 3 minutes: Business Problem, Technologies Used, Your Responsibilities, Biggest Challenge, Final Outcome.',expected:['Communication','Technical Depth','Leadership','Confidence'],followup:null},
+
+    {sec:'Technical',cat:'DevOps',title:'DevOps — Azure Container CI/CD',prompt:'Design an Azure DevOps CI/CD pipeline for containerized ASP.NET Core.',expected:['Build', 'xUnit tests', 'Docker image', 'Registry', 'Secrets', 'Deployment slots/rolling deploy', 'Rollback'],followup:'Explain how you would troubleshoot a failure in production.'},
+    {sec:'Technical',cat:'Networking',title:'Networking — SignalR Behind Load Balancer',prompt:'What must be handled when SignalR runs on multiple instances behind a load balancer?',expected:['Persistent connections', 'WebSocket upgrade', 'Sticky sessions', 'Backplane/Azure SignalR', 'Timeouts', 'TLS'],followup:'Explain the request flow step by step.'},
   ]
 },
 {
   id:'divya', name:'Divya Gupta', role:'Full Stack Developer (React + Node.js)', exp:'Fresher (Internship Experience)',
   tech:['JavaScript','TypeScript','React.js','Node.js','Express.js','MySQL','Sequelize','REST APIs','LangChain','LangGraph','RAG','n8n','Puppeteer'],
   projects:['AI Recruitment Platform','CRO Audit System','Splitkaro'],
-  categories:['JavaScript','React.js','Node.js','MySQL','AI Concepts','Coding','Logic Building','Communication','Problem Solving'],
+  categories:['JavaScript','React.js','Node.js','MySQL','AI Concepts','Coding','Logic Building','Communication','Problem Solving','DevOps','Networking'],
   questions:[
     {sec:'Technical',cat:'JavaScript',title:'Q1 — == vs ===',prompt:'Explain the difference between == and === in JavaScript.',code:'console.log([] == false)\nconsole.log([] === false)',expected:['Type Coercion','Strict Equality','Examples'],followup:'What is the output of the snippet above?'},
     {sec:'Technical',cat:'React.js',title:'Q2 — React Hooks',prompt:'Explain React Hooks — difference between useState(), useEffect(), useMemo(), useCallback().',expected:['State Management','Side Effects','Performance Optimization','Dependency Array'],followup:'Why does useEffect sometimes execute twice?'},
@@ -607,6 +622,9 @@ const CANDIDATES = [
     {sec:'Scenario',cat:'Problem Solving',title:'Scenario 2 — Slow AI API (15s)',prompt:'The AI API takes 15 seconds to generate a response. How would you improve the user experience?',expected:['Loading Indicator','Streaming Response','Retry','Queue','Timeout Handling','Caching'],followup:null},
     {sec:'Logic',cat:'Logic Building',title:'Logical Reasoning — 17 Sheep',prompt:'A farmer has 17 sheep. All but 9 die. How many sheep are left?',expected:['9 Sheep — a wording/observation trap, not a math problem'],followup:null},
     {sec:'Communication',cat:'Communication',title:'Communication — Pitch to HR Manager',prompt:'Imagine I am an HR manager. Explain your AI Recruitment Platform in 2 minutes without using technical terms.',expected:['Confidence','Clarity','Communication','Business Understanding'],followup:null},
+
+    {sec:'Technical',cat:'DevOps',title:'DevOps — Docker Deployment',prompt:'How would you containerize and deploy your React + Node.js application?',expected:['Dockerfile', 'Image build', 'Container run', 'Port mapping', 'Environment variables', 'Logs'],followup:'Explain how you would troubleshoot a failure in production.'},
+    {sec:'Technical',cat:'Networking',title:'Networking — CORS After Deployment',prompt:'Frontend works locally but browser blocks deployed API calls. What will you check?',expected:['CORS', 'API base URL', 'HTTPS mixed content', 'DNS', 'Port', 'Firewall', 'Network tab'],followup:'Explain the request flow step by step.'},
   ]
 },
 ];
